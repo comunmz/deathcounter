@@ -30,15 +30,37 @@ python deathcounter.py
 
 
 
-## 🛠️ Requisitos e Instalación
+🛠️ Requirements & Installation
+Python 3.x: Make sure you have Python installed on your system.
 
-1.  **Python 3.x**: Asegúrate de tener Python instalado.
-2.  **Librerías**: Instala la dependencia necesaria ejecutando:
-    ```bash
-    pip install keyboard
-    ```
-3.  **Fuentes**: El programa utiliza **Times New Roman** por defecto.
+Dependencies: Install the required library by running:
 
+Bash
+pip install keyboard
+Fonts: The application uses Times New Roman by default.
+
+
+📁 Data Persistence
+When you run the app for the first time, a file named boss_tries.json will be automatically created in the same folder. This file stores:
+
+Your list of saved bosses and their respective try counts.
+
+The current boss you are tracking.
+
+Your language preference (English/Spanish).
+
+Note: Do not delete this file if you want to keep your stats!
+
+⌨️ Controls
+Up Arrow: Add +1 try.
+
+Down Arrow: Subtract -1 try.
+
+End Key: Save progress and close the app.
+
+Left Click: Drag and move the counter anywhere on your screen.
+
+Right Click: Open the management menu (Change boss, delete, language, etc.).
 
 
 ### **Features**
