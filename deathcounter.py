@@ -53,7 +53,7 @@ class HollowCounter:
         self.lang = self.data.get("language", "es")
         self.current_boss = self.data.get("current_boss", TEXTS[self.lang]["default_boss"])
         
-        # Asegurar que el diccionario de jefes exista
+        
         if "bosses" not in self.data:
             self.data["bosses"] = {}
             
@@ -116,7 +116,7 @@ class HollowCounter:
         t = TEXTS[self.lang]
         self.menu = tk.Menu(self.root, tearoff=0, bg="black", fg="white")
         
-        # Submenú de selección de jefes
+        
         boss_menu = tk.Menu(self.menu, tearoff=0, bg="black", fg="white")
         bosses_dict = self.data.get("bosses", {})
         
@@ -127,7 +127,7 @@ class HollowCounter:
         else:
             boss_menu.add_command(label=t["no_bosses"], state="disabled")
 
-        # Estructura del menú principal (clic derecho)
+        
         self.menu.add_cascade(label=t["select"], menu=boss_menu)
         self.menu.add_command(label=t["add_boss"], command=self.add_new_boss) # <-- BOTÓN AÑADIDO
         self.menu.add_command(label=t["manager"], command=self.open_boss_manager)
@@ -206,13 +206,13 @@ class HollowCounter:
 
     def add_new_boss(self, window=None):
         t = TEXTS[self.lang]
-        # Usamos self.root como padre si no viene de la ventana del gestor
+        
         parent_win = window if window else self.root
         new_boss = simpledialog.askstring(t["new_boss_title"], t["new_boss_prompt"], parent=parent_win)
         
         if new_boss and new_boss.strip() != "":
             name = new_boss.strip()
-            # Si el jefe no existe, lo inicializamos a 0
+            
             if name not in self.data["bosses"]:
                 self.data["bosses"][name] = 0
             
@@ -221,7 +221,7 @@ class HollowCounter:
             self.update_display()
             self.save_data()
             
-            # Si estábamos en el gestor, lo refrescamos
+            
             if window and window != self.root:
                 window.destroy()
                 self.open_boss_manager()
