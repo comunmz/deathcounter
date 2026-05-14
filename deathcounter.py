@@ -52,8 +52,12 @@ class HollowCounter:
         self.data = self.load_data()
         self.lang = self.data.get("language", "es")
         self.current_boss = self.data.get("current_boss", TEXTS[self.lang]["default_boss"])
-        self.count = self.data.get("bosses", {}).get(self.current_boss, 0)
         
+        # Asegurar que el diccionario de jefes exista
+        if "bosses" not in self.data:
+            self.data["bosses"] = {}
+            
+        self.count = self.data["bosses"].get(self.current_boss, 0)
         
         self.font_style = ("Times New Roman", 26, "bold")
         
@@ -83,8 +87,7 @@ class HollowCounter:
     def save_data(self):
         if "bosses" not in self.data:
             self.data["bosses"] = {}
-        if self.current_boss:
-            self.data["bosses"][self.current_boss] = self.count
+        self.data["bosses"][self.current_boss] = self.count
         self.data["current_boss"] = self.current_boss
         self.data["language"] = self.lang
         with open(DATA_FILE, "w") as f:
@@ -113,6 +116,7 @@ class HollowCounter:
         t = TEXTS[self.lang]
         self.menu = tk.Menu(self.root, tearoff=0, bg="black", fg="white")
         
+        # Submenú de selección de jefes
         boss_menu = tk.Menu(self.menu, tearoff=0, bg="black", fg="white")
         bosses_dict = self.data.get("bosses", {})
         
@@ -123,7 +127,9 @@ class HollowCounter:
         else:
             boss_menu.add_command(label=t["no_bosses"], state="disabled")
 
+        # Estructura del menú principal (clic derecho)
         self.menu.add_cascade(label=t["select"], menu=boss_menu)
+        self.menu.add_command(label=t["add_boss"], command=self.add_new_boss) # <-- BOTÓN AÑADIDO
         self.menu.add_command(label=t["manager"], command=self.open_boss_manager)
         self.menu.add_separator()
         self.menu.add_command(label=t["lang"], command=self.toggle_language)
@@ -134,7 +140,7 @@ class HollowCounter:
 
     def select_boss(self, boss_name):
         self.current_boss = boss_name
-        self.count = self.data["bosses"][boss_name]
+        self.count = self.data["bosses"].get(boss_name, 0)
         self.update_display()
         self.save_data()
             
@@ -198,16 +204,27 @@ class HollowCounter:
             window.destroy()
             self.open_boss_manager()
 
-    def add_new_boss(self, window):
+    def add_new_boss(self, window=None):
         t = TEXTS[self.lang]
-        new_boss = simpledialog.askstring(t["new_boss_title"], t["new_boss_prompt"], parent=window)
+        # Usamos self.root como padre si no viene de la ventana del gestor
+        parent_win = window if window else self.root
+        new_boss = simpledialog.askstring(t["new_boss_title"], t["new_boss_prompt"], parent=parent_win)
+        
         if new_boss and new_boss.strip() != "":
-            self.current_boss = new_boss.strip()
-            self.count = self.data.get("bosses", {}).get(self.current_boss, 0)
+            name = new_boss.strip()
+            # Si el jefe no existe, lo inicializamos a 0
+            if name not in self.data["bosses"]:
+                self.data["bosses"][name] = 0
+            
+            self.current_boss = name
+            self.count = self.data["bosses"][name]
             self.update_display()
             self.save_data()
-            window.destroy()
-            self.open_boss_manager()
+            
+            # Si estábamos en el gestor, lo refrescamos
+            if window and window != self.root:
+                window.destroy()
+                self.open_boss_manager()
             
     def reset_tries(self):
         self.count = 0
