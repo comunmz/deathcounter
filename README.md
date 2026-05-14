@@ -36,6 +36,6 @@ python deathcounter.py
 * **Boss Management:** Includes options to add new bosses and a selection menu to switch between them.
 * **Auto-Save:** If you close the counter using the **"Close and Save"** button, a `.json` file will be generated. This file stores your boss list and attempt counts so you can pick up right where you left off the next time you play.
 
-**Enjoy! :)**
+Enjoy! :)
 
 ```
