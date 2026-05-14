@@ -30,6 +30,17 @@ python deathcounter.py
 
 
 
+## 🛠️ Requisitos e Instalación
+
+1.  **Python 3.x**: Asegúrate de tener Python instalado.
+2.  **Librerías**: Instala la dependencia necesaria ejecutando:
+    ```bash
+    pip install keyboard
+    ```
+3.  **Fuentes**: El programa utiliza **Times New Roman** por defecto.
+
+
+
 ### **Features**
 
 * **Language Support:** Right-click anywhere on the counter to switch between **Spanish** and **English**.
