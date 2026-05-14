@@ -30,14 +30,12 @@ python deathcounter.py
 
 
 
-🛠️ Requirements & Installation
-Python 3.x: Make sure you have Python installed on your system.
+## 🛠️ Requirements & Installation
 
-Dependencies: Install the required library by running:
-
-Bash
-pip install keyboard
-Fonts: The application uses Times New Roman by default.
+1.  **Python 3.x**: Make sure you have Python installed.
+2.  **Dependencies**: Install the required library for global hotkeys:
+    ```bash
+    pip install keyboard
 
 
 📁 Data Persistence
@@ -51,16 +49,7 @@ Your language preference (English/Spanish).
 
 Note: Do not delete this file if you want to keep your stats!
 
-⌨️ Controls
-Up Arrow: Add +1 try.
-
-Down Arrow: Subtract -1 try.
-
-End Key: Save progress and close the app.
-
-Left Click: Drag and move the counter anywhere on your screen.
-
-Right Click: Open the management menu (Change boss, delete, language, etc.).
+⌨️ ControlsActionControlAdd TryUp ArrowSubtract TryDown ArrowSave & CloseEnd KeyMove WindowLeft Click + DragOpen MenuRight Click
 
 
 ### **Features**
