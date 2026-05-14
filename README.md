@@ -30,7 +30,7 @@ python deathcounter.py
 
 
 
-## 🛠️ Requirements & Installation
+## **🛠️ Requirements & Installation**
 
 1.  **Python 3.x**: Make sure you have Python installed.
 2.  **Dependencies**: Install the required library for global hotkeys:
@@ -38,7 +38,7 @@ python deathcounter.py
     pip install keyboard
 
 
-📁 Data Persistence
+### **📁 Data Persistence**
 When you run the app for the first time, a file named boss_tries.json will be automatically created in the same folder. This file stores:
 
 Your list of saved bosses and their respective try counts.
@@ -49,8 +49,19 @@ Your language preference (English/Spanish).
 
 Note: Do not delete this file if you want to keep your stats!
 
-⌨️ ControlsActionControlAdd TryUp ArrowSubtract TryDown ArrowSave & CloseEnd KeyMove WindowLeft Click + DragOpen MenuRight Click
+### **⌨️ Controls & Shortcuts**
 
+**Action**   **input**
+
+**add try**   **▲ Up Arrow**
+
+**subtract try**   **▼ Down Arrow**
+
+**Save & Exit**   **END key**
+
+**Drag Window**   **Left Click + Mouse Move**
+
+**Open Menu**   **Right Click**
 
 ### **Features**
 
