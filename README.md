@@ -38,9 +38,4 @@ python deathcounter.py
 
 **Enjoy! :)**
 
----
-
-
-```
-
 ```
